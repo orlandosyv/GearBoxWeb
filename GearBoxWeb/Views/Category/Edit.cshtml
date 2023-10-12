@@ -1,0 +1,51 @@
+﻿@model Category
+
+<form method="post">
+    @* <input asp-for="Id" hidden />  
+        this line is required when we need a new ID or when updating the row
+    *@
+    <div class="border p-3 mt-6">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Category</h2>
+            <hr />
+        </div>
+        @* asp-validation-summary could be ModelOnly or None
+        ModelOnly is for messages only related to the Model itself, defined in Controller
+        and not the errors of each property.
+        None, does not render any error message *@
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary form-control">Update Category</button>
+            </div>
+            <div class="col-6">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-danger form-control">
+                    Back to list
+                </a>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+@section Scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
