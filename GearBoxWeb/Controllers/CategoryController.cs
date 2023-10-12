@@ -17,6 +17,7 @@ namespace GearBoxWeb.Controllers
             List<Category> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
+        //CREATE
         public IActionResult Create()
         {
             return View();
@@ -33,11 +34,12 @@ namespace GearBoxWeb.Controllers
             {
                 _db.Categories.Add(obj); //add new row on DB
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index"); //redirect to page
             }  
             return View();            
         }
-
+        //EDIT
         public IActionResult Edit(int? id)
         {
             if (id==null || id== 0) 
@@ -58,6 +60,7 @@ namespace GearBoxWeb.Controllers
             {
                 _db.Categories.Update(obj); //add new row on DB
                 _db.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index"); //redirect to page
             }
             return View();
@@ -87,6 +90,7 @@ namespace GearBoxWeb.Controllers
             }           
             _db.Categories.Remove(obj); //add new row on DB
             _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index"); //redirect to page           
         }
 
