@@ -27,16 +27,15 @@ namespace GearBoxWeb.Controllers
             if (obj.Name == obj.DisplayOrder.ToString()) 
             {
                 ModelState.AddModelError("name", "The Display Order cannot exactly match the Name.");
-            }
-       
+            }            
+
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj); //add new row on DB
                 _db.SaveChanges();
                 return RedirectToAction("Index"); //redirect to page
             }  
-            return View();
-            
+            return View();            
         }
     }
 }

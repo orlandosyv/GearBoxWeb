@@ -6,7 +6,11 @@
             <h2 class="text-primary">Create Category</h2>
             <hr/>
         </div>
-        <div asp-validation-summary="All"></div>
+        @* asp-validation-summary could be ModelOnly or None 
+        ModelOnly is for messages only related to the Model itself, defined in Controller 
+        and not the errors of each property.
+        None, does not render any error message *@
+        <div asp-validation-summary="All"></div> 
         <div class="mb-3 row p-1">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" />
@@ -34,3 +38,11 @@
 
     </div>
 </form>
+
+
+@section Scripts
+{
+    @{
+          <partial name="_ValidationScriptsPartial"/>
+    }
+}
