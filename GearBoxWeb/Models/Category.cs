@@ -10,8 +10,10 @@ namespace GearBoxWeb.Models
 
         [Required]
         [DisplayName("Category Name")]
+        [MaxLength(30)]
         public string Name { get; set; }
         [DisplayName("Display Order")]
+        [Range(1,100)] // ,ErrorMessage = "---mensaje de error que quiero mostrar-"
         public int DisplayOrder { get; set; }
         public string Description { get; set; }
 
