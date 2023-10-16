@@ -9,31 +9,31 @@
         </div>
     </div>
     <div class="card-body p-4">
+        
         <form method="post" class="row">
             <div class="border p-3">
-               
+
                 @* asp-validation-summary could be ModelOnly or None
                 ModelOnly is for messages only related to the Model itself, defined in Controller
                 and not the errors of each property.
                 None, does not render any error message *@
                 <div asp-validation-summary="All"></div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Name" class="form-control border-0 shadow"  />
+                    <input asp-for="Name" class="form-control border-0 shadow" />
                     <label asp-for="Name" class="ms-2"></label>
-                    
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="DisplayOrder" class="form-control border-0 shadow"  />
+                    <input asp-for="DisplayOrder" class="form-control border-0 shadow" />
                     <label asp-for="DisplayOrder" class="ms-2"></label>
-                    
+
                     <span asp-validation-for="DisplayOrder" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
                     <textarea asp-for="Description" class="form-control border-0 shadow" rows="3"></textarea>
-                    <label asp-for="Description" class="ms-2"></label>                    
+                    <label asp-for="Description" class="ms-2"></label>
                 </div>
-                <div class="row">
+                <div class="row pt-2 mt-3">
                     <div class="col-6">
                         <button type="submit" class="btn btn-primary form-control">Create Category</button>
                     </div>
@@ -47,9 +47,9 @@
             </div>
         </form>
 
-
     </div>
 </div>
+
 
 @section Scripts
 {
