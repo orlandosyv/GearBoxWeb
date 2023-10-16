@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34112.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearBoxWeb", "GearBoxWeb\GearBoxWeb.csproj", "{DD83C672-4E13-496A-BE09-9DF3F0954CC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearBoxWeb", "GearBoxWeb\GearBoxWeb.csproj", "{DD83C672-4E13-496A-BE09-9DF3F0954CC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearBox.DataAccess", "GearBox.DataAccess\GearBox.DataAccess.csproj", "{EE8BFF62-1BBA-47C1-A54B-8DE855767DF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearBox.Models", "GearBox.Models\GearBox.Models.csproj", "{6090B2A7-0E9F-4ABE-8188-248F8A945924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearBox.Utility", "GearBox.Utility\GearBox.Utility.csproj", "{D9505810-409F-4D5F-BACC-C01CB19BD6D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{DD83C672-4E13-496A-BE09-9DF3F0954CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD83C672-4E13-496A-BE09-9DF3F0954CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD83C672-4E13-496A-BE09-9DF3F0954CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8BFF62-1BBA-47C1-A54B-8DE855767DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8BFF62-1BBA-47C1-A54B-8DE855767DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8BFF62-1BBA-47C1-A54B-8DE855767DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8BFF62-1BBA-47C1-A54B-8DE855767DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6090B2A7-0E9F-4ABE-8188-248F8A945924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6090B2A7-0E9F-4ABE-8188-248F8A945924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6090B2A7-0E9F-4ABE-8188-248F8A945924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6090B2A7-0E9F-4ABE-8188-248F8A945924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9505810-409F-4D5F-BACC-C01CB19BD6D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9505810-409F-4D5F-BACC-C01CB19BD6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9505810-409F-4D5F-BACC-C01CB19BD6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9505810-409F-4D5F-BACC-C01CB19BD6D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
