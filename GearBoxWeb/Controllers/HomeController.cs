@@ -1,4 +1,4 @@
-using GearBoxWeb.Models;
+using GearBox.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

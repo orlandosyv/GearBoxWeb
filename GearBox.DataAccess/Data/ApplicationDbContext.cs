@@ -1,7 +1,7 @@
-﻿using GearBoxWeb.Models;
+﻿using GearBox.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GearBoxWeb.Data
+namespace GearBox.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

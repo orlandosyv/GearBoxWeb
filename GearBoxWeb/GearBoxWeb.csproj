@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\GearBox.DataAccess\GearBox.DataAccess.csproj" />
+    <ProjectReference Include="..\GearBox.Models\GearBox.Models.csproj" />
   </ItemGroup>
 
 </Project>

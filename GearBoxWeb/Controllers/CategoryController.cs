@@ -1,5 +1,5 @@
-﻿using GearBoxWeb.Data;
-using GearBoxWeb.Models;
+﻿using GearBox.DataAccess.Data;
+using GearBox.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GearBoxWeb.Controllers

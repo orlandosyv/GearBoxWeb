@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace GearBoxWeb.Migrations
+namespace GearBox.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryTableToDb : Migration
