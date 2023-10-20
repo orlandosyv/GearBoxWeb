@@ -4,6 +4,8 @@ using GearBox.Models;
 using Microsoft.AspNetCore.Mvc;
 using GearBox.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using GearBox.Models.ViewModels;
 
 namespace GearBoxWeb.Areas.Admin.Controllers
 {
@@ -18,26 +20,56 @@ namespace GearBoxWeb.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            List<Product> objProductList = _unitOfWork.Product.GetAll().ToList();
-            return View(objProductList);
+            List<Product> objProductList = 
+                _unitOfWork.Product.GetAll().ToList();  
             
+            return View(objProductList);            
         }
         //CREATE
         public IActionResult Create()
         {
-            return View();
+            //Projections EF core
+            //IEnumerable<SelectListItem> CategoryList = 
+            //    _unitOfWork.Category.GetAll().Select(x => new SelectListItem
+            //    {
+            //        Text = x.Name,
+            //        Value = x.Id.ToString(),
+            //    });
+            //ViewBag.CategoryList = CategoryList;
+            //ViewData["CategoryList"] = CategoryList;
+            ProductViewModel productVM = new()
+            {
+                CategoryList = 
+                _unitOfWork.Category.GetAll().Select(x => new SelectListItem
+                    {
+                        Text = x.Name,
+                        Value = x.Id.ToString(),
+                    }),
+            Product = new Product()
+            };
+
+            return View(productVM);
         }
         [HttpPost]
-        public IActionResult Create(Product obj)
+        public IActionResult Create(ProductViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Add(obj); //add new row on DB
+                _unitOfWork.Product.Add(obj.Product); //add new row on DB
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully";
                 return RedirectToAction("Index"); //redirect to page
             }
-            return View();
+            else {
+                obj.CategoryList =
+                _unitOfWork.Category.GetAll().Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString(),
+                });
+                return View(obj);
+            };
+            
         }
         //EDIT
         public IActionResult Edit(int? id)

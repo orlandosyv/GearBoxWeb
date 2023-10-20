@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace GearBox.Models
 {
@@ -38,8 +39,11 @@ namespace GearBox.Models
         [Range(0, 10000)]
         public double Price100 { get; set; }
         public int CategoryId { get; set; }
-        [ForeignKey("CategoryId")]        
+        [ForeignKey("CategoryId")]
+        [ValidateNever]
         public Category Category { get; set; }
+        [ValidateNever]
+        public string ImageUrl { get; set; }
 
         // Own Properties for GearBox
 
