@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GearBox.Models
 {
@@ -36,7 +37,10 @@ namespace GearBox.Models
         [Display(Name = "Price for +100")]
         [Range(0, 10000)]
         public double Price100 { get; set; }
-        
+        public int CategoryId { get; set; }
+        [ForeignKey("CategoryId")]        
+        public Category Category { get; set; }
+
         // Own Properties for GearBox
 
         [Display(Name = "Product Discount")]
@@ -58,6 +62,6 @@ namespace GearBox.Models
 
         [Range(0, 10000)]
         public double Height { get; set; }
-
+        
     }
 }
