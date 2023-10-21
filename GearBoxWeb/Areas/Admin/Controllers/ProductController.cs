@@ -51,23 +51,23 @@ namespace GearBoxWeb.Areas.Admin.Controllers
             return View(productVM);
         }
         [HttpPost]
-        public IActionResult Create(ProductViewModel obj)
+        public IActionResult Create(ProductViewModel productVM)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Add(obj.Product); //add new row on DB
+                _unitOfWork.Product.Add(productVM.Product); //add new row on DB
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully";
                 return RedirectToAction("Index"); //redirect to page
             }
             else {
-                obj.CategoryList =
+                productVM.CategoryList =
                 _unitOfWork.Category.GetAll().Select(x => new SelectListItem
                 {
                     Text = x.Name,
                     Value = x.Id.ToString(),
                 });
-                return View(obj);
+                return View(productVM);
             };
             
         }

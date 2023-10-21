@@ -11,7 +11,7 @@ namespace GearBox.Models.ViewModels
     public class ProductViewModel
     {
         public Product Product { get; set; }
-        //[ValidateNever]
+        [ValidateNever]
         public IEnumerable<SelectListItem> CategoryList { get; set; }
     }
 }
