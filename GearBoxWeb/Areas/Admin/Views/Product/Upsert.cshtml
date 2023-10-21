@@ -4,15 +4,15 @@
     <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">Create Product</h2>
+                <h2 class="text-white py-2">@(Model.Product.Id != 0 ? "Update" : "Create") Product</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
         
-        <form method="post" class="row">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Product.Id" /> @* hidden *@
             <div class="border p-3">
-
                 @* asp-validation-summary could be ModelOnly or None
                 ModelOnly is for messages only related to the Model itself, defined in Controller
                 and not the errors of each property.
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.ImageUrl" class="form-control border-0 shadow" />
+                    <input type="file" asp-for="Product.ImageUrl" class="form-control border-0 shadow" />
                     <label asp-for="Product.ImageUrl" class="ms-2"></label>
                     <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
                 </div>
@@ -98,7 +98,13 @@
 
                 <div class="row pt-2 mt-3">
                     <div class="col-6">
-                        <button type="submit" class="btn btn-primary form-control">Create Product</button>
+                        @if (Model.Product.Id != 0) {
+                            <button type="submit" class="btn btn-primary form-control">Update</button>
+                        } else {
+                            <button type="submit" class="btn btn-primary form-control">Create Product</button>
+                        }
+
+                        
                     </div>
                     <div class="col-6">
                         <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary border form-control">

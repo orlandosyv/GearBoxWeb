@@ -26,7 +26,7 @@ namespace GearBoxWeb.Areas.Admin.Controllers
             return View(objProductList);            
         }
         //CREATE
-        public IActionResult Create()
+        public IActionResult Upsert(int? id) //Create
         {
             //Projections EF core
             //IEnumerable<SelectListItem> CategoryList = 
@@ -38,20 +38,27 @@ namespace GearBoxWeb.Areas.Admin.Controllers
             //ViewBag.CategoryList = CategoryList;
             //ViewData["CategoryList"] = CategoryList;
             ProductViewModel productVM = new()
-            {
-                CategoryList = 
-                _unitOfWork.Category.GetAll().Select(x => new SelectListItem
-                    {
-                        Text = x.Name,
-                        Value = x.Id.ToString(),
-                    }),
-            Product = new Product()
-            };
+                {
+                    CategoryList = 
+                    _unitOfWork.Category.GetAll().Select(x => new SelectListItem
+                        {
+                            Text = x.Name,
+                            Value = x.Id.ToString(),
+                        }),
 
-            return View(productVM);
+                    Product = new Product()
+                };
+
+            if (id == null || id == 0) 
+                {return View(productVM);}
+            else { 
+                //Update
+                productVM.Product = _unitOfWork.Product.Get(u=>u.Id == id);
+                return View(productVM);
+            }            
         }
         [HttpPost]
-        public IActionResult Create(ProductViewModel productVM)
+        public IActionResult Upsert(ProductViewModel productVM, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
@@ -68,36 +75,9 @@ namespace GearBoxWeb.Areas.Admin.Controllers
                     Value = x.Id.ToString(),
                 });
                 return View(productVM);
-            };
-            
+            };            
         }
-        //EDIT
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == id);
-            if (productFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(productFromDb);
-        }
-        [HttpPost]
-        public IActionResult Edit(Product obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Product.Update(obj); //add new row on DB
-                _unitOfWork.Save();
-                TempData["success"] = "Product updated successfully";
-                return RedirectToAction("Index"); //redirect to page
-            }
-            return View();
-        }
-
+        
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
