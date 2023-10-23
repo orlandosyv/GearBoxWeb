@@ -21,7 +21,28 @@ namespace GearBox.DataAccess.Repository
 
         public void Update(Product obj)
         {
-            _db.Products.Update(obj);
+           var objFromDb = _db.Products.FirstOrDefault(x => x.Id == obj.Id);
+            if (objFromDb != null)
+            { 
+                objFromDb.Title = obj.Title;
+                objFromDb.Description = obj.Description;                
+                objFromDb.ISBN = obj.ISBN;
+                objFromDb.Price = obj.Price;
+                objFromDb.ListPrice = obj.ListPrice;
+                objFromDb.Description = obj.Description; 
+                objFromDb.CategoryId = obj.CategoryId;  
+                objFromDb.Author = obj.Author;
+                objFromDb.Price50 = obj.Price50;
+                objFromDb.Price100 = obj.Price100;
+                objFromDb.ProductDiscount = obj.ProductDiscount;
+                objFromDb.CostOfProduct = obj.CostOfProduct;
+                objFromDb.Weight = obj.Weight;
+                if (objFromDb.ImageUrl != null)
+                {
+                    objFromDb.ImageUrl = obj.ImageUrl;
+                }
+            } 
+            //_db.Products.Update(obj);
         }
     }
 }
