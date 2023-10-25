@@ -2,6 +2,7 @@ using GearBox.DataAccess.Data;
 using GearBox.DataAccess.Repository;
 using GearBox.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//options => options.SignIn.RequireConfirmedAccount = true
+builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddRazorPages(); //for Identity
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
@@ -28,8 +33,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication(); //For Identity
 app.UseAuthorization();
+app.MapRazorPages(); //For Identity (since it is on razor pages)
 
 // ? can or not defined
 app.MapControllerRoute(

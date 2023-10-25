@@ -1,9 +1,11 @@
 ﻿using GearBox.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GearBox.DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
@@ -14,7 +16,9 @@ namespace GearBox.DataAccess.Data
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {           
+        {
+            //Identity is called on this function OnModelCreating
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1, Description = "Action and fights" },
@@ -111,7 +115,7 @@ namespace GearBox.DataAccess.Data
 
                 );
 
-            //base.OnModelCreating(modelBuilder);
+            
         }
     }
 }
