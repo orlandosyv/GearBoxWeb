@@ -3,10 +3,14 @@ using GearBox.DataAccess.Data;
 using GearBox.Models;
 using Microsoft.AspNetCore.Mvc;
 using GearBox.DataAccess.Repository;
+using Microsoft.AspNetCore.Authorization;
+using GearBox.Utility;
 
 namespace GearBoxWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //Authorization could be above Class or above Specific Action Methods
+    [Authorize(Roles =SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

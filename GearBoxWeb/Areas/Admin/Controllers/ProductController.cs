@@ -6,10 +6,13 @@ using GearBox.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GearBox.Models.ViewModels;
+using GearBox.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GearBoxWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
